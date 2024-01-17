@@ -1,4 +1,4 @@
-FROM node:20.10.0 as builder
+FROM node:20 as builder
 
 # root directory에 파일이 안 담기게 하기 위해 설정
 WORKDIR /app
