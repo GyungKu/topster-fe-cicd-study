@@ -6,7 +6,7 @@ import axios from "axios";
 
 const app = createApp(App);
 
-axios.defaults.baseURL = 'http://localhost:8080/api/v1';
+axios.defaults.baseURL = '/api/v1';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 
