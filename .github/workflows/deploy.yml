@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -10,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - run: docker build -t topster-front -f Dockerfile . # Docerfile로 이미지 생성
-      - run: docker run -e CI=true topster-front npm run serve # 서버 실행
+      - run: docker build -t gyungku/topster-front -f Dockerfile . # Docerfile로 이미지 생성
+      - run: docker push gyungku/topster-front
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
